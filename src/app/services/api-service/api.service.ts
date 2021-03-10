@@ -11,13 +11,14 @@ export class ApiService {
     this.apiUrl = "http://localhost:3000"
   }
 
-  serverCall(method: string, endpoint: string, data, callback){
+  serverCall(method: string, endpoint: string, data:any, callback:any){
     $.ajax({
       url: this.apiUrl+endpoint,
       method: method,
-      data: data,
-      success: function(data: string){
-        callback(JSON.parse(data));
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      success: function(data: any){
+        callback(data);
       }
     });
   }

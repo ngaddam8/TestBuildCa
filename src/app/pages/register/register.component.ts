@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +7,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
+  public username: any = "";
+  public password: any = "";
+  public firstname: any = "";
+  public lastname: any = "";
+  public avatar: any = "";
+  public error: string = "";
+  public userService: UserService;
+  
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
 
   ngOnInit(): void {
+  }
+
+  fieldChange(){
+    this.error = "";
+  }
+
+  register(){
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    let that = this;
+
+    if(this.username == "" || this.password == "" || this.firstname == "" || this.lastname == "" || this.avatar == ""){
+      this.error = "All the fields are required to register an account";
+    } else if (!re.test(this.username)){
+      this.error = "Please input a valid email address";
+    } else{
+      this.userService.register(this.username, this.password, this.firstname, this.lastname, this.avatar, (data: any)=>{
+        console.log(data);
+      })
+    }
   }
 
 }

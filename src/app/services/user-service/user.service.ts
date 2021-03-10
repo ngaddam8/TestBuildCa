@@ -10,27 +10,33 @@ export class UserService {
     this.api = api;
   }
 
-  loggedIn(callback){
-    this.api.serverCall("GET", "/api/isLoggedIn", null, (data)=>{
+  loggedIn(callback: any){
+    this.api.serverCall("GET", "/api/isLoggedIn", null, (data: any)=>{
       callback(data);
     });
   }
 
-  getLoggedInUser(callback){
-    this.api.serverCall("GET", "/api/loggedInUser", null, (data)=>{
+  getLoggedInUser(callback: any ){
+    this.api.serverCall("GET", "/api/loggedInUser", null, (data: any)=>{
       callback(data);
     });
   }
 
-  logOut(callback){
-    this.api.serverCall("GET", "/api/logout", null, (data)=>{
+  logOut(callback: any){
+    this.api.serverCall("GET", "/api/logout", null, (data: any)=>{
       callback(data);
     });
   }
 
-  login(email, password, callback){
-    this.api.serverCall("POST", "/api/login", {email: email, password: password}, (data)=>{
+  login(email: any, password: any, callback: any){
+    this.api.serverCall("POST", "/api/login", {email: email, password: password}, (data: any)=>{
       callback(data)
+    });
+  }
+
+  register(email: any, password: any, firstName: any, lastName: any, avatar: any, callback: any){
+    this.api.serverCall("POST", "/api/register", {email: email, password: password, firstName: firstName, lastName: lastName, avatar: avatar}, (data: any)=>{
+      callback(data);
     });
   }
 }
