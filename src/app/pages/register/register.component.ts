@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   public error: string = "";
   public userService: UserService;
   
-  constructor(userService: UserService) {
+  constructor(userService: UserService, public app: AppComponent) {
     this.userService = userService;
   }
 
@@ -37,8 +38,13 @@ export class RegisterComponent implements OnInit {
       this.error = "Please input a valid email address";
     } else{
       this.userService.register(this.username, this.password, this.firstname, this.lastname, this.avatar, (data: any)=>{
-        console.log(data);
-      })
+        if(data.status != undefined && data.status == "success"){
+          that.app.user = data.user;
+          that.app.navigateToUrl("/home");
+        } else {
+          that.error = data.error;
+        }
+      });
     }
   }
 

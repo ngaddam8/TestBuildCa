@@ -16,13 +16,17 @@ export class AppProvider {
   load() {
     let that = this;
     return new Promise((resolve, reject) => {
-      this.userService.loggedIn((response)=>{
-        if('Logged In'){
-            
+      this.userService.loggedIn((response:any)=>{
+        if(response == 'Logged In'){
+          that.userService.getLoggedInUser((response:any)=>{
+            that.user = response;
+            resolve(true);
+          });
         } else {
           that.user = null;
+          resolve(true);
         }
-        resolve(true);
+        
       });
     });
   }

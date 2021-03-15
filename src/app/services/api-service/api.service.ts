@@ -17,6 +17,7 @@ export class ApiService {
       method: method,
       data: JSON.stringify(data),
       contentType: "application/json",
+      xhrFields: {withCredentials: true},
       success: function(data: any){
         callback(data);
       }

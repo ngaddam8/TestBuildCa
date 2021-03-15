@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   public password: any = "";
   public error: string = "";
   public userService: UserService;
-  constructor(userServcie: UserService) {
+  constructor(userServcie: UserService, public app: AppComponent) {
     this.userService = userServcie;
   }
 
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
     } else {
       this.userService.login(this.username, this.password, (data: any)=>{
         if(data.status != undefined && data.status == "success"){
-
+          that.app.user = data.user;
+          that.app.navigateToUrl("/home");
         } else {
           that.error = data.error;
         }
