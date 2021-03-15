@@ -13,10 +13,10 @@ export class AppComponent {
   title = 'ca-frontend';
   user: any = null;
   constructor(
-    protected router: Router, 
-    private appProvider: AppProvider
+    //protected router: Router, 
+    //private appProvider: AppProvider
   ){
-    this.user = appProvider.getUser();
+    //this.user = appProvider.getUser();
   }
 
   ngOnInit(){
@@ -28,6 +28,6 @@ export class AppComponent {
   }
 
   navigateToUrl(url: string){
-    this.router.navigate([url]);
+    //this.router.navigate([url]);
   }
 }

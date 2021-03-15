@@ -26,7 +26,6 @@ export class AppProvider {
           that.user = null;
           resolve(true);
         }
-        
       });
     });
   }
