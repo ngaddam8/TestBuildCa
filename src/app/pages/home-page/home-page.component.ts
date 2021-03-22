@@ -7,11 +7,6 @@ import { AdvertsComponent } from '../adverts/adverts.component';
   styleUrls: ['./home-page.component.scss']
 })
 
-@NgModule({
-  declarations: [
-    AdvertsComponent
-  ]
-})
 export class HomePageComponent implements OnInit {
 
   constructor() { }
