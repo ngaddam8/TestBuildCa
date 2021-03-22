@@ -1,1 +1,10 @@
-<p>adverts works!</p>
+<div class="advertContainer">
+    <div class="advert shadow" *ngFor="let ad of adverts">
+        <div class="image" [ngStyle]="{'background-image': 'url(' + api.apiUrl + '' + ad.featuredImage + ')'}"></div>
+        <div class="adDetails">
+            <h1 class="title">{{ad.title}}</h1>
+            <p class="description">{{ad.description}}</p>
+        </div>
+    </div>
+</div>
+

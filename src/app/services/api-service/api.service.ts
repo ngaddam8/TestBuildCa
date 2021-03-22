@@ -6,7 +6,7 @@ import * as $ from "jquery";
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl: string;
+  public apiUrl: string;
   constructor() { 
     this.apiUrl = "http://localhost:3000"
   }

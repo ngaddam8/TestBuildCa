@@ -1,0 +1,39 @@
+@import "../../../globals.scss";
+.advertContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+    div.advert{
+        width: 100%;
+        border-radius: $cardBorderRadius;
+        height: 200px;
+        overflow: hidden;
+        margin: 12px;
+        .image{
+            width: 300px;
+            height: 200px;
+            display: inline-block;
+            float: left;
+            background-color: $midnightGreen;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+        }
+
+        .adDetails{
+            width: calc(100% - 300px);
+            float: left;
+            padding: 10px;
+
+            .title{
+                margin:10px 0;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            p{
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+}
