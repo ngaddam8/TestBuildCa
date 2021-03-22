@@ -20,4 +20,23 @@ export class AdvertsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getDateTime(date: string) {
+    let dateObj = new Date(date);
+    let day = dateObj.getDate();
+    let month = dateObj.getMonth() + 1;
+    let monthString = (month < 9) ? "0" + month : month;
+    let year = dateObj.getFullYear();
+    let hours = dateObj.getHours();
+    let minutes = dateObj.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    let hoursString = hours < 10 ? '0' + hours : hours;
+    let minutesString = minutes < 10 ? '0' + minutes : minutes;
+    let strTime = hoursString + ':' + minutesString + ' ' + ampm;
+
+    return day + "/" + monthString + "/" + year + " " + strTime;
+  }
+
 }
